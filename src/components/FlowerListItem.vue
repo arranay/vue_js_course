@@ -1,5 +1,5 @@
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 
 export default {
   name: "FlowerListItem",
@@ -8,10 +8,19 @@ export default {
       type: Object
     }
   },
+  computed: {
+    ...mapState(['card'])
+  },
   methods: {
-    ...mapActions(['addToCard']),
+    ...mapActions(['addToCard', 'removeFromCard']),
     addFlowerToCard() {
       this.addToCard(this.flower)
+    },
+    removeFlowerFromCard() {
+      this.removeFromCard(this.flower.id)
+    },
+    itemsLenght() {
+      return this.card.filter(cardItem => cardItem.id === this.flower.id).length;
     }
   }
 }
@@ -23,7 +32,12 @@ export default {
     <div class="card-body">
       <h5 class="card-title">{{ flower.name }}</h5>
       <p class="card-text">{{ flower.cost }} ₽</p>
-      <button class="btn btn-outline-success" @click="addFlowerToCard">В КОРЗИНУ</button>
+      <button class="btn btn-outline-success" v-if="!itemsLenght()" @click="addFlowerToCard">В КОРЗИНУ</button>
+      <div v-if="itemsLenght()" class="d-flex align-items-center">
+        <button class="btn btn-outline-success" @click="addFlowerToCard"><i class="bi bi-plus"></i></button>
+        <h5 class="text-center m-2" style="width: 25px">{{ itemsLenght() }}</h5>
+        <button class="btn btn-outline-success" @click="removeFlowerFromCard"><i class="bi bi-dash"></i></button>
+      </div>
     </div>
   </div>
 </template>

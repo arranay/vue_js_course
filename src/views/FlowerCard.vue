@@ -25,8 +25,8 @@ export default {
         <div class="d-flex justify-content-between my-4">
           <h2>Корзина</h2>
         </div>
-        <hr>
-        <FlowerList></FlowerList>
+
+        <FlowerList :flowers="card"></FlowerList>
         <hr>
 
         <div>
