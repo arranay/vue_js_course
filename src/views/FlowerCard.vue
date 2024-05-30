@@ -11,7 +11,10 @@ export default {
   },
   methods: {
     getTotalCost() {
-      return this.card.reduce((sum, item) => sum = sum + item.cost, 0)
+      return this.card.reduce((accumulator, value) => accumulator + value.count * value.flower.cost, 0);
+    },
+    getFlowers() {
+      return this.card.map(c => c.flower);
     }
   }
 }
@@ -26,12 +29,13 @@ export default {
           <h2>Корзина</h2>
         </div>
 
-        <FlowerList :flowers="card"></FlowerList>
+        <FlowerList :flowers="getFlowers()"></FlowerList>
+
         <hr>
 
-        <div>
+        <div class="d-flex justify-content-between">
           <h3>Итого {{ getTotalCost() }} ₽</h3>
-          <button>Оформить заказ</button>
+          <button class="btn btn-outline-success mb-4">Оформить заказ</button>
         </div>
       </div>
     </div>

@@ -22,7 +22,6 @@ export default {
           :name="item.name"
           :cost="item.cost"
           :img="item.img"
-
       ></FlowerListItem>
     </div>
   </div>

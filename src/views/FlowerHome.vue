@@ -31,7 +31,6 @@ export default {
           <h2>Все букеты</h2>
           <input class="form-control w-25" placeholder="Поиск..." v-model="search">
         </div>
-        <hr>
         <FlowerList :flowers="getFlowers()"></FlowerList>
       </div>
     </div>

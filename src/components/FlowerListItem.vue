@@ -19,8 +19,8 @@ export default {
     removeFlowerFromCard() {
       this.removeFromCard(this.flower.id)
     },
-    itemsLenght() {
-      return this.card.filter(cardItem => cardItem.id === this.flower.id).length;
+    itemsLength() {
+      return this.card.find(cardItem => cardItem.flower.id === this.flower.id)?.count || 0;
     }
   }
 }
@@ -32,10 +32,10 @@ export default {
     <div class="card-body">
       <h5 class="card-title">{{ flower.name }}</h5>
       <p class="card-text">{{ flower.cost }} ₽</p>
-      <button class="btn btn-outline-success" v-if="!itemsLenght()" @click="addFlowerToCard">В КОРЗИНУ</button>
-      <div v-if="itemsLenght()" class="d-flex align-items-center">
+      <button class="btn btn-outline-success" v-if="!itemsLength()" @click="addFlowerToCard">В КОРЗИНУ</button>
+      <div v-if="itemsLength()" class="d-flex align-items-center">
         <button class="btn btn-outline-success" @click="addFlowerToCard"><i class="bi bi-plus"></i></button>
-        <h5 class="text-center m-2" style="width: 25px">{{ itemsLenght() }}</h5>
+        <h5 class="text-center m-2" style="width: 25px">{{ itemsLength() }}</h5>
         <button class="btn btn-outline-success" @click="removeFlowerFromCard"><i class="bi bi-dash"></i></button>
       </div>
     </div>
