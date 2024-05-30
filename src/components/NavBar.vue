@@ -22,6 +22,9 @@ export default {
       <a class="btn btn-lg btn-link link-secondary link-underline link-underline-opacity-0" @click="this.$router.push({ name: 'Cart' })">
         <i class="bi bi-cart"></i> Корзина <span class="badge bg-secondary" style="width: 40px">{{getCount()}}</span>
       </a>
+      <a class="btn btn-lg btn-link link-secondary link-underline link-underline-opacity-0" @click="this.$router.push({ name: 'Order' })">
+        <i class="bi bi-bag-heart"></i> Заказы
+      </a>
       <a class="btn btn-lg btn-link link-secondary link-underline link-underline-opacity-0" @click="this.$router.push({ name: 'Login' })">
         <i class="bi bi-box-arrow-in-right"></i> Войти
       </a>

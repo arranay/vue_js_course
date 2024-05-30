@@ -63,6 +63,6 @@ const flowers = [
         delivery_date: new Date(),
         img: "https://florcat.ru/upload/delight.webpconverter/upload/resize_cache/iblock/3e1/500_500_1/3e1f390dbfde71a00cb6efdf0a8c58ff.jpg.webp?162728356714648"
     }
-]
+];
 
 export default flowers;

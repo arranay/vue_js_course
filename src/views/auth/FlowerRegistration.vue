@@ -17,7 +17,7 @@ export default {
               <h3 class="fw-normal mb-3 pb-3">Регистрация</h3>
 
               <div data-mdb-input-init class="form-outline mb-4">
-                <label class="form-label">E-mail адресс</label>
+                <label class="form-label">E-mail адрес</label>
                 <input type="email" class="form-control form-control-lg" />
               </div>
 
