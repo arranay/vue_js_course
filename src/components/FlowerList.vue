@@ -6,6 +6,10 @@ export default {
   props: {
     flowers: {
       type: Object
+    },
+    isOrder: {
+      type: Boolean,
+      default: false
     }
   },
   components: {
@@ -22,6 +26,7 @@ export default {
           :name="item.name"
           :cost="item.cost"
           :img="item.img"
+          :showButton="!isOrder"
       ></FlowerListItem>
     </div>
   </div>
