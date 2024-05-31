@@ -36,7 +36,7 @@ export default {
                 <button class="btn btn-outline-success btn-lg" type="button">Войти</button>
               </div>
 
-              <p>Уже есть аккаунта? <a href="login" class="link-success">Авторизируйтесь!</a></p>
+              <p>Уже есть аккаунт? <a href="login" class="link-success">Авторизируйтесь!</a></p>
 
             </form>
 

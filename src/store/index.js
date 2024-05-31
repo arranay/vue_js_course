@@ -16,12 +16,16 @@ export default createStore({
             if (flower) flower.count--;
             if (flower.count === 0) state.card.splice(state.card.indexOf(flower), 1);
         },
+        clearCard(state) {
+            state.card = [];
+        },
         saveUser(state, user) { state.user = user; },
         deleteUser(state) { state.user = null; },
     },
     actions: {
         addToCard({ commit }, flowers) { commit('addToCard', flowers); },
         removeFromCard({ commit }, index) { commit('removeFromCard', index); },
+        clearCard({ commit }) { commit('clearCard'); },
         saveUser({ commit }, user) { commit('saveUser', user); },
         deleteUser({ commit }) { commit('deleteUser'); },
     },
