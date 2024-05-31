@@ -1,11 +1,13 @@
 <script>
-import { mapState } from 'vuex';
+import {mapActions, mapState} from 'vuex';
+
 export default {
   name: "NavBar",
   computed: {
-    ...mapState(['card'])
+    ...mapState(['card', 'user'])
   },
   methods: {
+    ...mapActions(['deleteUser']),
     getCount() {
       return this.card.reduce((a, c) => a = a + c.count, 0);
     }
@@ -25,8 +27,12 @@ export default {
       <a class="btn btn-lg btn-link link-secondary link-underline link-underline-opacity-0" @click="this.$router.push({ name: 'Order' })">
         <i class="bi bi-bag-heart"></i> Заказы
       </a>
-      <a class="btn btn-lg btn-link link-secondary link-underline link-underline-opacity-0" @click="this.$router.push({ name: 'Login' })">
+
+      <a class="btn btn-lg btn-link link-secondary link-underline link-underline-opacity-0" v-if="!user" @click="this.$router.push({ name: 'Login' })">
         <i class="bi bi-box-arrow-in-right"></i> Войти
+      </a>
+      <a class="btn btn-lg btn-link link-secondary link-underline link-underline-opacity-0" v-if="user" @click="deleteUser">
+        <i class="bi bi-box-arrow-left"></i> Выйти
       </a>
     </div>
   </div>

@@ -42,8 +42,7 @@ const router = createRouter({
 
 router.beforeEach(async (to, from, next) => {
     const userInfo = await store.getters.user;
-    console.log(userInfo);
-    if (to.name === 'Order') next({name: 'Login'})
+    if (to.name === 'Order' && !userInfo) next({name: 'Login'})
     else next()
 })
 

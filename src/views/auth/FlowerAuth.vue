@@ -1,6 +1,25 @@
 <script>
+import {mapActions} from "vuex";
+import user from "@/mock/user";
+
 export default {
-  name: "FlowerAuth"
+  name: "FlowerAuth",
+  data() {
+    return {
+      email: '',
+      password: '',
+    }
+  },
+  methods:  {
+    ...mapActions(['saveUser']),
+    saveUserToStore() {
+      if (user.email === this.email && user.password === this.password) {
+        this.saveUser(user);
+        this.$router.push({ name: 'Home' });
+      }
+      else window.alert('Проверьте введенные данные');
+    }
+  }
 }
 </script>
 
@@ -12,23 +31,23 @@ export default {
 
           <div class="d-flex align-items-center justify-content-center h-100">
 
-            <form class="w-75">
+            <form class="w-75" @submit.prevent="saveUserToStore">
 
               <h3 class="fw-normal mb-3 pb-3">Авторизация</h3>
 
               <div data-mdb-input-init class="form-outline mb-4">
                 <label class="form-label">E-mail адрес</label>
-                <input type="email" class="form-control form-control-lg" />
+                <input type="email" class="form-control form-control-lg" v-model="email" />
               </div>
 
               <div data-mdb-input-init class="form-outline mb-4">
                 <label class="form-label" for="form2Example28">Пароль</label>
-                <input type="password" id="form2Example28" class="form-control form-control-lg" />
+                <input type="password" id="form2Example28" class="form-control form-control-lg" v-model="password" />
               </div>
 
               <div class="d-flex pt-1 mb-4 justify-content-between align-items-end w-100">
                 <button class="btn btn-lg btn-link link-secondary px-0" type="button" @click="this.$router.push({ name: 'Home' })">На главную</button>
-                <button class="btn btn-outline-success btn-lg" type="button">Войти</button>
+                <button class="btn btn-outline-success btn-lg" type="submit">Войти</button>
               </div>
 
               <p>У Вас ещё нет аккаунта? <a href="register" class="link-success">Зарегестрируйтесь!</a></p>
